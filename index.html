@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Some New Site is Here</title>
+        <script>
+            function getLocation() {
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(showPosition);
+                } else {
+                    document.getElementById("location").innerHTML = "Geolocation is not supported by this browser.";
+                }
+            }
+
+            function showPosition(position) {
+                document.getElementById("location").innerHTML = "Latitude: " + position.coords.latitude +
+                "<br>Longitude: " + position.coords.longitude;
+            }
+        </script>
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+              var canvas = document.getElementById("myCanvas");
+              var ctx = canvas.getContext("2d");
+        
+              // Set styles
+              ctx.fillStyle = 'rgba(0, 0, 255, 0.5)'; // Semi-transparent blue
+              ctx.strokeStyle = '#FF0000'; // Red stroke
+              ctx.lineWidth = 3;
+        
+              // Draw filled rectangle
+              ctx.fillRect(50, 50, 150, 100);
+        
+              // Draw stroked rectangle
+              ctx.strokeRect(50, 50, 150, 100);
+        
+              // Draw a circle
+              ctx.beginPath();
+              ctx.arc(200, 150, 50, 0, Math.PI * 2);
+              ctx.closePath();
+              ctx.fill();
+              ctx.stroke();
+        
+              // Draw a quadratic curve
+              ctx.beginPath();
+              ctx.moveTo(50, 150);
+              ctx.quadraticCurveTo(150, 200, 250, 150);
+              ctx.stroke();
+        
+              // Draw a cubic Bézier curve
+              ctx.beginPath();
+              ctx.moveTo(50, 200);
+              ctx.bezierCurveTo(100, 300, 200, 100, 250, 200);
+              ctx.stroke();
+            });
+        </script>
+
+    </head>
+    <body>
+        <button onclick="getLocation()">Get Location</button>
+        <p id="location"></p>
+        
+        <header>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </header>
+        <p id="location"></p>
+
+        <canvas id="myCanvas" width="400" height="400" style="border:1px solid #000000;"></canvas>
+
+    </body>
+</html>
